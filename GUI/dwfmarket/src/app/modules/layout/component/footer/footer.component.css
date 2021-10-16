@@ -1,0 +1,38 @@
+footer {
+  padding: 10px;
+  color: #bbbb;
+  font-size: 12px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.social-icons {
+  display: center;
+  padding: 0px;
+}
+.social-icons a {
+  color: var(--granite-gray);
+  margin: 0 0.3rem;
+  display: center;
+  align-items: center;
+  justify-content: center;
+  width: 1px;
+  height: 1px;
+  font-size: 1rem;
+  transition: var(--trans);
+  -webkit-transition: var(--trans);
+  -moz-transition: var(--trans);
+  -ms-transition: var(--trans);
+  -o-transition: var(--trans);
+}
+.social-icons a:hover {
+  color: #fff;
+}
