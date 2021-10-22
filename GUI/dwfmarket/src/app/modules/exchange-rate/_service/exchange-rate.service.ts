@@ -15,6 +15,7 @@ export class ExchangeRateService {
   ) { }
 
   getExchangeRate(rate: string){
+    this.apiURI = ApisURI.exchangeRateURI;
     this.apiURI = this.apiURI.replace("{rate}",rate);
     return this.http.get<ExchangeRate>(this.apiURI);
   }
