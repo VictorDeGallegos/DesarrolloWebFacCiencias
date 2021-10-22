@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './modules/layout/layout.module';
+import { ExchangeRateModule} from './modules/exchange-rate/exchange-rate.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { LayoutModule } from './modules/layout/layout.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    ExchangeRateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
