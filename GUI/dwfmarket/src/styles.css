@@ -686,6 +686,8 @@ progress {
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 576px) {
@@ -11420,4 +11422,13 @@ body {
 .progress .progress-bar {
   font-size: 8px;
   line-height: 8px;
+}
+
+.marginForm {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.btn-block {
+  width: 100%;
 }
