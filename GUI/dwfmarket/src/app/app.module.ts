@@ -8,6 +8,9 @@ import { LayoutModule } from './modules/layout/layout.module';
 import { ExchangeRateModule} from './modules/exchange-rate/exchange-rate.module';
 
 import { CustomerModule } from "./modules/customer/customer.module";
+import { HomeModule } from './modules/home/home.module';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +21,8 @@ import { CustomerModule } from "./modules/customer/customer.module";
     HttpClientModule,
     LayoutModule,
     ExchangeRateModule,
-    CustomerModule
+    CustomerModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
