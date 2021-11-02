@@ -11423,3 +11423,12 @@ body {
   font-size: 8px;
   line-height: 8px;
 }
+
+.marginForm {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.btn-block {
+  width: 100%;
+}
