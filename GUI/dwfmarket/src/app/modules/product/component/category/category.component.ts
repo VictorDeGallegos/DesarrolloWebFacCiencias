@@ -1,52 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { Region } from '../../_model/region';
-import { RegionService } from '../../_service/region.service';
+import { Category } from '../../_model/category';
+import { CategoryService } from '../../_service/category.service';
 import { FormBuilder, Validators} from '@angular/forms';
 
 declare var $: any;
 
+
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-region',
-  templateUrl: './region.component.html',
-  styleUrls: ['./region.component.css']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
 })
-export class RegionComponent implements OnInit {
+export class CategoryComponent implements OnInit {
 
-  regions: Region[] = [];
-  region: Region = new Region();
+  categories: Category[] = [];
+  category: Category = new Category();
   formulario = this.formBuilder.group({
-    id_region: [''],
-    region: ['', Validators.required]
+    id_category: [''],
+    category: ['', Validators.required]
   });
-  post_region = false;
+  post_category = false;
   submitted = false;
 
   constructor(
-    private region_service: RegionService,
+    private category_service: CategoryService,
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.getRegions();
+    this.getCategories();
   }
 
-  getRegions(){
-    this.region_service.getRegions().subscribe(
+  getCategories(){
+    this.category_service.getCategories().subscribe(
       res => {
-        this.regions = res;
-        console.log(this.regions);
+        this.categories = res;
       },
       err => console.log(err)
     )
   }
 
-  getRegion(id_region: number){
-    this.region_service.getRegion(id_region).subscribe(
+  getCategory(id_category: number){
+    this.category_service.getCategory(id_category).subscribe(
       res => {
-        this.region = res;
-        console.log(this.region);
+        this.category = res;
       },
       err => console.log(err)
     )
@@ -54,11 +53,10 @@ export class RegionComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    if(this.post_region){
-      this.region_service.createRegion(this.formulario.value).subscribe(
+    if(this.post_category){
+      this.category_service.createCategory(this.formulario.value).subscribe(
         res => {
-          console.log(this.region);
-          this.getRegions();
+          this.getCategories();
           this.closeModal();
           Swal.fire({
             position: 'top-end',
@@ -73,15 +71,14 @@ export class RegionComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Error!',
-            text: 'La región no puede ser registrada',
+            text: 'La categoría no puede ser registrada',
           })
         }
       )
     }else{
-      this.region_service.updateRegion(this.formulario.value).subscribe(
+      this.category_service.updateCategory(this.formulario.value).subscribe(
         res => {
-          console.log(this.region);
-          this.getRegions();
+          this.getCategories();
           this.closeModal();
           Swal.fire({
             position: 'top-end',
@@ -96,27 +93,27 @@ export class RegionComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Error!',
-            text: 'La región no puede ser actualizada',
+            text: 'La categoría no puede ser actualizada',
           })
         }
       )
     }
   }
 
-  createRegion(){
-    this.post_region = true;
+  createCategory(){
+    this.post_category = true;
     this.formulario.reset();
-    $("#region_modal").modal("show");
+    $("#category_modal").modal("show");
   }
 
-  updateRegion(region: Region){
-    this.post_region = false;
-    this.formulario.controls['id_region'].setValue(region.id_region);
-    this.formulario.controls['region'].setValue(region.region);
-    $("#region_modal").modal("show");
+  updateCategory(category: Category){
+    this.post_category = false;
+    this.formulario.controls['id_category'].setValue(category.id_category);
+    this.formulario.controls['category'].setValue(category.category);
+    $("#category_modal").modal("show");
   }
 
-  deleteRegion(id_region: number){
+  deleteCategory(id_category: number){
     Swal.fire({
       title: 'Deseas eliminar la Región?',
       icon: 'warning',
@@ -126,10 +123,9 @@ export class RegionComponent implements OnInit {
       confirmButtonText: 'Si, eliminar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.region_service.deleteRegion(id_region).subscribe(
+        this.category_service.deleteCategory(id_category).subscribe(
           res => {
-            console.log(this.region);
-            this.getRegions();
+            this.getCategories();
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -149,7 +145,6 @@ export class RegionComponent implements OnInit {
         )
       }
     })
-    
   }
 
   get f() {
@@ -157,7 +152,8 @@ export class RegionComponent implements OnInit {
   }
 
   closeModal(){
-    $("#region_modal").modal("hide");
+    $("#category_modal").modal("hide");
     this.submitted = false;
   }
+
 }
