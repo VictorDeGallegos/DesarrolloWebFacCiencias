@@ -4,7 +4,7 @@ import { RegionComponent } from './component/region/region.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomerComponent } from './component/customer/customer.component';
 import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
-
+import { NgxPhotoEditorModule } from "ngx-photo-editor";
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import { CustomerDetailComponent } from './component/customer-detail/customer-de
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPhotoEditorModule
   ],
   exports: [
     RegionComponent,
